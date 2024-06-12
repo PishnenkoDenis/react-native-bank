@@ -1,6 +1,5 @@
 import { FC, ReactNode } from "react";
-import { ScrollView, View } from "react-native";
-import { useTailwind } from "tailwind-rn";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 interface ILayout {
   isScrollView?: boolean;
@@ -8,10 +7,18 @@ interface ILayout {
 }
 
 export const Layout: FC<ILayout> = ({ children, isScrollView = true }) => {
-  const tw = useTailwind();
   return (
-    <View style={tw("h-full w-full bg-white pt-16")}>
+    <View style={styles.layout}>
       {isScrollView ? <ScrollView>{children}</ScrollView> : children}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  layout: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: "white",
+    paddingTop: 16,
+  },
+});

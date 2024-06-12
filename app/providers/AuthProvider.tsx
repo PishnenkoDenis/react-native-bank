@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }: any) => {
     setIsLoading(true);
     try {
       const { user } = await register(email, password);
-
       await addDoc(collection(db, "users"), {
         _id: user.uid,
         displayName: "No name",
